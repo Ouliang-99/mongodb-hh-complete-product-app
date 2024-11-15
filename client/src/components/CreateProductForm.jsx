@@ -7,6 +7,7 @@ function CreateProductForm() {
   const [imageUrl, setImageUrl] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
 
   const navigate = useNavigate();
 
@@ -16,6 +17,7 @@ function CreateProductForm() {
       image: imageUrl,
       price,
       description,
+      category,
     });
     navigate("/");
   };
@@ -36,9 +38,7 @@ function CreateProductForm() {
             name="name"
             type="text"
             placeholder="Enter name here"
-            onChange={(event) => {
-              setName(event.target.value);
-            }}
+            onChange={(event) => setName(event.target.value)}
             value={name}
           />
         </label>
@@ -51,9 +51,7 @@ function CreateProductForm() {
             name="image"
             type="text"
             placeholder="Enter image url here"
-            onChange={(event) => {
-              setImageUrl(event.target.value);
-            }}
+            onChange={(event) => setImageUrl(event.target.value)}
             value={imageUrl}
           />
         </label>
@@ -66,9 +64,7 @@ function CreateProductForm() {
             name="price"
             type="number"
             placeholder="Enter price here"
-            onChange={(event) => {
-              setPrice(event.target.value);
-            }}
+            onChange={(event) => setPrice(event.target.value)}
             value={price}
           />
         </label>
@@ -79,11 +75,8 @@ function CreateProductForm() {
           <textarea
             id="description"
             name="description"
-            type="text"
             placeholder="Enter description here"
-            onChange={(event) => {
-              setDescription(event.target.value);
-            }}
+            onChange={(event) => setDescription(event.target.value)}
             value={description}
             rows={4}
             cols={30}
@@ -94,7 +87,12 @@ function CreateProductForm() {
       <div className="input-container">
         <label>
           Category
-          <select id="category" name="category" value="it">
+          <select
+            id="category"
+            name="category"
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+          >
             <option disabled value="">
               -- Select a category --
             </option>

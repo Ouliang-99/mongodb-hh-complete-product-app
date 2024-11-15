@@ -8,6 +8,7 @@ function HomePage() {
   const [products, setProducts] = useState([]);
   const [isError, setIsError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+  const [category, setCategory] = useState("it");
 
   const getProducts = async () => {
     try {
@@ -32,6 +33,10 @@ function HomePage() {
     getProducts();
   }, []);
 
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+  };
+
   return (
     <div>
       <div className="app-wrapper">
@@ -54,7 +59,12 @@ function HomePage() {
         <div className="category-filter">
           <label>
             View Category
-            <select id="category" name="category" value="it">
+            <select
+              id="category"
+              name="category"
+              value={category}
+              onChange={handleCategoryChange}
+            >
               <option disabled value="">
                 -- Select a category --
               </option>
